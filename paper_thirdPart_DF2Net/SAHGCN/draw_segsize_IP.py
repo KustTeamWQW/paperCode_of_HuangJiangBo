@@ -1,0 +1,27 @@
+import matplotlib.pyplot as plt
+from matplotlib import rcParams
+import numpy as np
+rcParams['font.family'] = 'serif'
+rcParams['font.serif'] = 'Times New Roman'
+# plt.figure(figsize=(8, 8))
+# 模擬一些實驗結果數據（這裡的數據是假設的，請根據實際數據進行替換）
+segsize = [10,30,50,70,90]
+S2HGCN_results = [0.8595074,0.85113174,0.81104803,0.8139728,0.8155393]
+S2HGCN_results=np.array(S2HGCN_results) * 100
+AdvFNet_results = [0.86266494,0.86299735,0.87065506,0.86549014,0.8513976]
+AdvFNet_results=np.array(AdvFNet_results) * 100
+# 畫出折綫圖
+plt.plot(segsize, S2HGCN_results, marker='*',color='y', linestyle='--',linewidth=3, markersize=10,label='S2HGCN')
+plt.plot(segsize, AdvFNet_results, marker='^', color='r',linestyle='--',linewidth=3, markersize=10,label='DF2Net')
+# 添加標題和軸標籤
+# plt.title('實驗結果折綫圖')
+# plt.title(' Indian Pines')
+plt.legend(loc='lower left',fontsize='12')
+plt.xlabel('Segmentation Scale',fontsize='14')
+plt.ylabel('OA(%)',fontsize='14')
+
+# 添加圖例
+# plt.legend()
+plt.savefig("seg_seize_IP"+ '.png', format='png', transparent=True, dpi=400)
+# 顯示折綫圖
+plt.show()
